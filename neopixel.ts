@@ -57,6 +57,20 @@ namespace neopixel {
         }
 
         /**
+         * Set LED to a given color (range 0-255 for r, g, b). 
+         * You need to call ``show`` to make the changes visible.
+         * @param pixeloffset position of the NeoPixel in the strip
+         * @param rgb RGB color of the LED
+         */
+        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors" 
+        //% blockGap=8
+        //% weight=80
+        //% parts="neopixel" advanced=true
+        setPixelColor(pixeloffset: number, rgb: number): void {
+            this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
+        }
+
+        /**
          * Send all the changes to the strip.
          */
         //% blockId="neopixel_show" block="%strip|show" blockGap=8
@@ -75,15 +89,6 @@ namespace neopixel {
         //% parts="neopixel"
         clear(): void {
             this.buf.fill(0, 0, this._length * 3);
-        }
-
-        /**
-         * Gets the number of pixels declared on the strip
-         */
-        //% blockId="neopixel_length" block="%strip|length" blockGap=8
-        //% weight=60 advanced=true
-        length() {
-            return this._length;
         }
 
         /**
