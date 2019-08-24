@@ -186,7 +186,7 @@ namespace neopixel {
     //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(pin: DigitalPin, numleds: number, mode: NeoPixelMode): Strip {
+    export function create(pin: DigitalPin, numleds: number): Strip {
         let strip = new Strip();
         strip.buf = pins.createBuffer(numleds * 3);
         strip._length = numleds;
@@ -233,5 +233,4 @@ namespace neopixel {
         let b = (rgb) & 0xFF;
         return b;
     }
-
 }
