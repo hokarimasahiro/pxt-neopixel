@@ -102,6 +102,17 @@ namespace neopixel {
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
+        /**
+         * chane red and green.
+         * @param rgb eg: 0x00ffc0
+         */
+        //% blockId="neopixel_chane_red_and_green" block="%NEO|chane reg and green in %rgb" blockGap=8
+        //% weight=58
+        //% parts="neopixel" advanced=true
+        changeRandG(rgb: number): number {
+            return packRGB(unpackG(rgb),unpackR(rgb),unpackB(rgb));
+        }
+
 
         /**
          * Shift LEDs forward and clear with zeros.
