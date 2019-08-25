@@ -89,6 +89,7 @@ namespace neopixel {
         //% parts="neopixel"
         clear(): void {
             this.buf.fill(0, 0, this._length * 3);
+            this.show()
         }
 
         /**
