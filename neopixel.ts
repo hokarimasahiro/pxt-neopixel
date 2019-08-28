@@ -102,17 +102,6 @@ namespace neopixel {
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
-        /**
-         * chane red and green.
-         * @param rgb eg: 0x00ffc0
-         */
-        //% blockId="neopixel_chane_red_and_green" block="%strip|chane reg and green in %rgb" blockGap=8
-        //% weight=58
-        //% parts="neopixel" advanced=true
-        changeRandG(rgb: number): number {
-            return packRGB(unpackG(rgb),unpackR(rgb),unpackB(rgb));
-        }
-
 
         /**
          * Shift LEDs forward and clear with zeros.
@@ -198,7 +187,7 @@ namespace neopixel {
      * @param pin the pin where the neopixel is connected.
      * @param numleds number of leds in the strip, eg: 24,30,60,64
      */
-    //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds|leds as %mode"
+    //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds"
     //% weight=90 blockGap=8
     //% parts="neopixel"
     //% trackArgs=0,2
@@ -223,6 +212,17 @@ namespace neopixel {
     //% advanced=true
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
+    }
+
+    /**
+     * change red and green.
+     * @param rgb eg: 0x00ffc0
+     */
+    //% blockId="neopixel_change_red_and_green" block="%strip|change reg and green in %rgb" blockGap=8
+    //% weight=58
+    //% parts="neopixel" advanced=true
+    export function changeRandG(rgb: number): number {
+        return packRGB(unpackG(rgb), unpackR(rgb), unpackB(rgb));
     }
 
     /**
