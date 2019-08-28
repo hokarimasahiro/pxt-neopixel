@@ -98,7 +98,7 @@ namespace neopixel {
          */
         //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" blockGap=8
         //% weight=59
-        //% parts="neopixel" advanced=true
+        //% parts="neopixel"
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
@@ -110,7 +110,7 @@ namespace neopixel {
          */
         //% blockId="neopixel_shift" block="%strip|shift pixels by %offset" blockGap=8
         //% weight=40
-        //% parts="neopixel"
+        //% parts="neopixel" advanced=true
         shift(offset: number = 1): void {
             offset = offset >> 0;
             this.buf.shift(-offset * 3, 0, this._length * 3)
@@ -123,7 +123,7 @@ namespace neopixel {
          */
         //% blockId="neopixel_rotate" block="%strip|rotate pixels by %offset" blockGap=8
         //% weight=39
-        //% parts="neopixel"
+        //% parts="neopixel" advanced=true
         rotate(offset: number = 1): void {
             offset = offset >> 0;
             this.buf.rotate(-offset * 3, 0, this._length * 3)
@@ -209,7 +209,7 @@ namespace neopixel {
      */
     //% weight=1
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
-    //% advanced=true
+    //% parts="neopixel" advanced=true
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
@@ -218,7 +218,7 @@ namespace neopixel {
      * change red and green.
      * @param rgb eg: 0x00ffc0
      */
-    //% blockId="neopixel_change_red_and_green" block="%strip|change reg and green in %rgb" blockGap=8
+    //% blockId="neopixel_change_red_and_green" block="%strip|change red and green in %rgb" blockGap=8
     //% weight=58
     //% parts="neopixel" advanced=true
     export function changeRandG(rgb: number): number {
