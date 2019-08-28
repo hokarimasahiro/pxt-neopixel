@@ -8,7 +8,8 @@
     "files": [
         "README.md",
         "neopixel.ts",
-        "sendBuffer.asm"
+        "sendBuffer.asm",
+        "_locales/ja/neopixel-strings.json"
     ],
     "testFiles": [
         "test.ts"
