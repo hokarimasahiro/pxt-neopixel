@@ -24,6 +24,26 @@ enum NeoPixelColors {
     Black = 0x000000
 }
 
+enum NeoPixelPins {
+    //% block P0
+    P0 = DigitalPin.P0,
+    //% block P1
+    P1 = DigitalPin.P1,
+    //% block P2
+    P2 = DigitalPin.P2,
+    //% block P8
+    P8 = DigitalPin.P8,
+    //% block P12
+    P12 = DigitalPin.P12,
+    //% block P13
+    P13 = DigitalPin.P13,
+    //% block P14
+    P14 = DigitalPin.P14,
+    //% block P15
+    P15 = DigitalPin.P15,
+    //% block P16
+    P16 = DigitalPin.P16
+};
 /**
  * Functions to operate NeoPixel strips.
  */
@@ -187,12 +207,12 @@ namespace neopixel {
      * @param pin the pin where the neopixel is connected.
      * @param numleds number of leds in the strip, eg: 24,30,60,64
      */
-    //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds"
+    //% blockId="neopixel_create" block="NeoPixel at pin %pin=neopixel_pins|with %numleds"
     //% weight=90 blockGap=8
     //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(pin: DigitalPin, numleds: number): Strip {
+    export function create(pin: number, numleds: number): Strip {
         let strip = new Strip();
         strip.buf = pins.createBuffer(numleds * 3);
         strip._length = numleds;
@@ -233,6 +253,16 @@ namespace neopixel {
     //% advanced=true
     export function colors(color: NeoPixelColors): number {
         return color;
+    }
+
+    /**
+     * Gets the Pin of a Digital Pin
+    */
+    //% weight=1 blockGap=8
+    //% blockId="neopixel_pins" block="%pins"
+    //% advanced=true
+    export function Pinno(pin: NeoPixelPins): number {
+        return pin;
     }
 
     function packRGB(a: number, b: number, c: number): number {
