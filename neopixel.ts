@@ -261,7 +261,7 @@ namespace neopixel {
     //% weight=1 blockGap=8
     //% blockId="neopixel_pins" block="%pins"
     //% advanced=true
-    export function Pinno(pin: NeoPixelPins): number {
+    export function Pins(pin: NeoPixelPins): number {
         return pin;
     }
 
