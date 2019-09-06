@@ -1,7 +1,7 @@
 /**
  * Well known colors for a NeoPixel strip
  */
-enum NeoPixelColors {
+enum RGBColors {
     //% block=red
     Red = 0xFF0000,
     //% block=orange
@@ -48,7 +48,6 @@ namespace neopixel {
          */
         //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors" 
         //% weight=85 blockGap=8
-        //% parts="neopixel"
         showColor(rgb: number) {
             rgb = rgb >> 0;
             this.setAllRGB(rgb);
@@ -64,7 +63,6 @@ namespace neopixel {
         //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors" 
         //% blockGap=8
         //% weight=80
-        //% parts="neopixel"
         setPixelColor(pixeloffset: number, rgb: number): void {
             this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
         }
@@ -74,7 +72,6 @@ namespace neopixel {
          */
         //% blockId="neopixel_show" block="%strip|show" blockGap=8
         //% weight=79
-        //% parts="neopixel"
         show() {
             sendBuffer(this.buf, this.pin);
         }
@@ -85,7 +82,6 @@ namespace neopixel {
          */
         //% blockId="neopixel_clear" block="%strip|clear"
         //% weight=76
-        //% parts="neopixel"
         clear(): void {
             this.buf.fill(0, 0, this._length * 3);
             this.show()
@@ -97,42 +93,15 @@ namespace neopixel {
          */
         //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" blockGap=8
         //% weight=59
-        //% parts="neopixel"
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
-        }
-
-        /**
-         * Shift LEDs forward and clear with zeros.
-         * You need to call ``show`` to make the changes visible.
-         * @param offset number of pixels to shift forward, eg: 1
-         */
-        //% blockId="neopixel_shift" block="%strip|shift pixels by %offset" blockGap=8
-        //% weight=40
-        //% parts="neopixel" advanced=true
-        shift(offset: number = 1): void {
-            offset = offset >> 0;
-            this.buf.shift(-offset * 3, 0, this._length * 3)
-        }
-
-        /**
-         * Rotate LEDs forward.
-         * You need to call ``show`` to make the changes visible.
-         * @param offset number of pixels to rotate forward, eg: 1
-         */
-        //% blockId="neopixel_rotate" block="%strip|rotate pixels by %offset" blockGap=8
-        //% weight=39
-        //% parts="neopixel" advanced=true
-        rotate(offset: number = 1): void {
-            offset = offset >> 0;
-            this.buf.rotate(-offset * 3, 0, this._length * 3)
         }
 
         /**
          * Set the pin where the neopixel is connected, defaults to P0.
          */
         //% weight=10
-        //% parts="neopixel" advanced=true
+        //% advanced=true
         setPin(pin: DigitalPin): void {
             this.pin = pin;
             pins.digitalWritePin(this.pin, 0);
@@ -188,7 +157,6 @@ namespace neopixel {
      */
     //% blockId="neopixel_create" block="NeoPixel at pin %pin=neopixel_pins|with %numleds"
     //% weight=90 blockGap=8
-    //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=strip
     export function create(pin: DigitalPin, numleds: number): Strip {
@@ -208,7 +176,6 @@ namespace neopixel {
      */
     //% weight=1
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
-    //% parts="neopixel" advanced=true
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
@@ -219,7 +186,6 @@ namespace neopixel {
      */
     //% blockId="neopixel_change_red_and_green" block="%strip|change red and green in %rgb" blockGap=8
     //% weight=58
-    //% parts="neopixel" advanced=true
     export function changeRandG(rgb: number): number {
         return packRGB(unpackG(rgb), unpackR(rgb), unpackB(rgb));
     }
@@ -229,8 +195,7 @@ namespace neopixel {
     */
     //% weight=2 blockGap=8
     //% blockId="neopixel_colors" block="%color"
-    //% advanced=true
-    export function colors(color: NeoPixelColors): number {
+    export function colors(color: RGBColors): number {
         return color;
     }
 
