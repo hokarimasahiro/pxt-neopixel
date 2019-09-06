@@ -99,7 +99,9 @@ namespace neopixel {
 
         /**
          * Set the pin where the neopixel is connected, defaults to P0.
+         * @param pin a digitalPin. eg: Digitalpin.P0
          */
+        //% blockId="neopixel_set_pin" block="%set pin|%pin"
         //% weight=10
         //% advanced=true
         setPin(pin: DigitalPin): void {
