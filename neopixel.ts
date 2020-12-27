@@ -44,6 +44,12 @@ namespace neopixel {
     /**
      * A NeoPixel strip
      */
+    //% shim=sendBufferAsm
+    function sendBuffer(buf: Buffer, pin: DigitalPin) {
+    }
+    /**
+     * A NeoPixel strip
+     */
     export class Strip {
         buf: Buffer;
         pin: DigitalPin;
@@ -249,7 +255,7 @@ namespace neopixel {
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
-            ws2812b.sendBuffer(this.buf, this.pin);
+            sendBuffer(this.buf, this.pin);
         }
 
         /**
